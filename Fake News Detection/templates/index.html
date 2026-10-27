@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Fake News Detection</h1>
+        <p>Enter a news article below to check it.</p>
+
+        <form action="/predict" method="POST">
+            <textarea
+                name="news_text"
+                placeholder="Enter news text here..."
+                required
+            ></textarea>
+
+            <button type="submit">Check News</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                <h2>Result</h2>
+                <p>{{ result }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
